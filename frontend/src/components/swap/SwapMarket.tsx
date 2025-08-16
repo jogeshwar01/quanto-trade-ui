@@ -18,7 +18,7 @@ const SwapMarket = () => {
           />
         )}
         <span className="text-font text-xl w-fit text-nowrap">
-          <span className="text-vestgrey-100 font-semibold">
+          <span className="text-vestgrey-100 ">
             {ticker?.symbol?.split("-")?.[0]}
           </span>
           <span className="text-vestgrey-100">-PERP</span>

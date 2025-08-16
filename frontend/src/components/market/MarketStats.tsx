@@ -1,5 +1,6 @@
 import { useContext, useMemo } from "react";
 import { TradesContext } from "../../state/TradesProvider";
+import Setting from "../icons/Setting";
 
 function MarketStats() {
   const { ticker } = useContext(TradesContext);
@@ -8,60 +9,65 @@ function MarketStats() {
     if (!ticker) return [];
 
     return [
-      { label: "Mark Price", value: parseFloat(ticker.markPrice).toFixed(2) },
+      {
+        label: "Mark",
+        value: `$${parseFloat(ticker.markPrice).toLocaleString()}`,
+        className: "text-red-500",
+      },
+      {
+        label: "Oracle",
+        value: parseFloat(ticker.indexPrice).toLocaleString(),
+        className: "text-white",
+      },
       {
         label: "24h Change",
-        value:
-          ticker?.priceChange && ticker?.priceChangePercent
-            ? `${
-                parseFloat(ticker?.priceChange) > 0
-                  ? "+" + parseFloat(ticker.priceChange).toFixed(2)
-                  : parseFloat(ticker.priceChange).toFixed(2)
-              } (${parseFloat(ticker?.priceChangePercent).toFixed(2)}%)`
-            : "-",
+        value: `${
+          parseFloat(ticker.priceChange) > 0
+            ? "+" + parseFloat(ticker.priceChange).toLocaleString()
+            : parseFloat(ticker.priceChange).toLocaleString()
+        } ${parseFloat(ticker.priceChangePercent).toFixed(2)}%`,
         className:
           parseFloat(ticker.priceChangePercent) >= 0
-            ? "text-green"
-            : "text-red",
+            ? "text-green-500"
+            : "text-red-500",
       },
-      { label: "24h Volume", value: "$3,157,834.47" }, // Assuming volume is static
-      { label: "Open Interest", value: "$137,625.79" }, // Assuming open interest is static
       {
-        label: "1h Funding/Countdown",
-        value: `${ticker?.oneHrFundingRate}%`, // Add the percentage sign here
-        className:
-          parseFloat(ticker?.oneHrFundingRate) >= 0
-            ? "text-primary"
-            : "text-red",
+        label: "24h Volume (USD)",
+        value: "$24,052,850.52", // This would come from actual volume data
+        className: "text-white",
+      },
+      {
+        label: "Open Interest (USD)",
+        value: "$802,376.78", // This would come from actual open interest data
+        className: "text-white",
       },
     ];
   }, [ticker]);
 
   return (
-    <div className="flex items-center gap-4 px-8 ml-4">
+    <div className="flex items-center gap-4 pr-4 ml-2">
+      <div className="h-8 border-l border-gray-700"></div>
+
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`flex flex-col gap-0.5 min-w-16 text-nowrap ${
-            stat.className || ""
+          className={`flex flex-col gap-1 ${
+            index > 2 ? "w-28" : index > 1 ? "w-20" : "w-16"
           }`}
         >
+          <div className="text-xs text-gray-400 font-normal">{stat.label}</div>
           <div
-            className={`flex flex-1 items-center justify-start text-md font-semibold ${
-              stat.className || "text-vestgrey-50"
+            className={`text-sm font-medium ${
+              stat.className || "text-gray-400"
             }`}
           >
             {stat.value}
-
-            {stat.label == "1h Funding/Countdown" && (
-              <div className="text-white ml-1">/ 00:00:00</div>
-            )}
-          </div>
-          <div className="flex flex-1 w-fit items-center justify-start  text-md capitalize text-vestgrey-100 border-b-2 border-dashed border-blue-900">
-            {stat.label}
           </div>
         </div>
       ))}
+      <div className="flex items-center text-gray-400">
+        <Setting />
+      </div>
     </div>
   );
 }

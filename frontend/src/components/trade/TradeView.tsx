@@ -56,7 +56,7 @@ export const TradeView = ({ market }: { market: string }) => {
           chartRef.current,
           cleanedKlineData,
           {
-            background: "rgb(15 15 15)",
+            background: "rgba(7, 9, 16)",
             color: "white",
           }
         );
@@ -120,9 +120,9 @@ export const TradeView = ({ market }: { market: string }) => {
 
   return (
     <div className="h-full min-h-[450px] max-h-[525px] bg-container-bg border-t border-border overflow-hidden w-full flex flex-col">
-      <div className="w-full py-2 px-3 flex items-center relative justify-between leading-[16px] flex-1 text-text-emphasis">
-        <div className="w-[20%] text-lg font-semibold">
-          {ticker?.symbol ? `${ticker?.symbol?.split("-")?.[0]} / US DOLLAR` : ""}
+      <div className="w-full py-2 px-3 flex text-gray-400 items-center relative justify-between leading-[16px] flex-1 text-text-emphasis">
+        <div className="w-[20%] text-lg ">
+          {ticker?.symbol?.split("-")?.[0]}
         </div>
         <div className="flex space-x-2">
           <div className="w-[20%] py-1 text-xs">Time</div>
@@ -132,7 +132,7 @@ export const TradeView = ({ market }: { market: string }) => {
               key={option.label}
               className={`px-2 text-xs ${
                 selectedTime === option.value
-                  ? "text-white font-bold"
+                  ? "text-primary"
                   : "text-text-emphasis"
               }`}
               onClick={() => setSelectedTime(option.value)}
@@ -142,7 +142,7 @@ export const TradeView = ({ market }: { market: string }) => {
           ))}
         </div>
         <div className="w-[15%] text-right my-1">
-          <div className="font-semibold text-xs">Trading View</div>
+          <div className=" text-xs text-primary">Trading View</div>
         </div>
       </div>
 

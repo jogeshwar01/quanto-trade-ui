@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { TradesContext } from "../../state/TradesProvider";
 import SelectTickerTable from "./SelectTickerTable";
 import { marketsWithImages } from "../../utils/constants";
+import Info from "../icons/Info";
 
 function MarketButton() {
   const { ticker } = useContext(TradesContext);
@@ -15,14 +16,14 @@ function MarketButton() {
 
   return (
     <div>
-      <div className="flex h-full">
+      <div className="flex h-full pl-[14px]">
         <div className="self-center">
           <div className="cursor-pointer"></div>
         </div>
 
         <div className="grid grow">
           <button
-            className="flex items-center justify-between gap-3 pr-8 mr-2"
+            className="flex items-center justify-between gap-3 mr-2"
             onClick={toggleSelect}
           >
             <div className="flex items-center gap-3">
@@ -36,14 +37,10 @@ function MarketButton() {
                 />
               )}
               <span className="text-font text-xl w-fit text-nowrap">
-                <span className="text-vestgrey-50 font-semibold">
+                <span className="text-vestgrey-50">
                   {ticker?.symbol?.split("-")?.[0]}
                 </span>
-                <span className="text-vestgrey-100">-PERP</span>
               </span>
-              <div className="rounded border border-border px-1 py-0.5 mr-2">
-                <div className=" text-primary text-md align-middle">100x</div>
-              </div>
             </div>
             <svg
               width="15"
@@ -63,6 +60,10 @@ function MarketButton() {
                 clipRule="evenodd"
               ></path>
             </svg>
+
+            <div className="flex items-center gap-2">
+              <Info />
+            </div>
           </button>
 
           {isSelectOpen && (

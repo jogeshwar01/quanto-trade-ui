@@ -49,13 +49,13 @@ export const OrderBook = () => {
       <div className="relative h-full bg-background text-vestgrey-100">
         <div className="flex flex-col h-full  fadein-floating-element bg-background xs:min-h-[25vh] md:min-h-0">
           <div className="flex justify-between text-sm px-2 py-1 mb-1 text-vestgrey-100">
-            <div className="font-semibold text-[12px] text-center border-b-2 border-dashed border-blue-900 w-fit">
+            <div className=" text-[12px] text-center border-b-2 border-dashed border-blue-900 w-fit">
               Price
             </div>
-            <div className="font-semibold text-[12px] border-b-2 border-dashed border-blue-900 w-fit">
+            <div className=" text-[12px] border-b-2 border-dashed border-blue-900 w-fit">
               Total ({ticker?.symbol?.split("-")?.[0]})
             </div>
-            <div className="font-semibold text-[12px] text-left border-b-2 border-dashed border-blue-900 w-fit">
+            <div className=" text-[12px] text-left border-b-2 border-dashed border-blue-900 w-fit">
               Total ($)
             </div>
           </div>

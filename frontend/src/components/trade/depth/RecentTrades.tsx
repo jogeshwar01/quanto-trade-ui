@@ -17,13 +17,13 @@ export const RecentTrades = () => {
     <div className="h-full flex flex-col py-1 pl-2 pr-2 text-xs text-center recent-trades-header text-vestgrey-100 font-display bg-background">
       {/* Recent Trades Header */}
       <div className="flex justify-between mb-2">
-        <span className="font-semibold text-[12px] text-left border-b-2 border-dashed border-blue-900 w-fit">
+        <span className=" text-[12px] text-left border-b-2 border-dashed border-blue-900 w-fit">
           Price
         </span>
-        <span className="font-semibold text-[12px] pr-1 text-center border-b-2 border-dashed border-blue-900 w-fit">
+        <span className=" text-[12px] pr-1 text-center border-b-2 border-dashed border-blue-900 w-fit">
           Size ({ticker?.symbol?.split("-")?.[0]})
         </span>
-        <span className="font-semibold text-[12px] text-right border-b-2 border-dashed border-blue-900 w-fit">
+        <span className=" text-[12px] text-right border-b-2 border-dashed border-blue-900 w-fit">
           Time
         </span>
       </div>

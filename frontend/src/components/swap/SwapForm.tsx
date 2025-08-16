@@ -119,7 +119,7 @@ const SwapForm = () => {
                 ))}
 
                 {/* Checkboxes */}
-                <div className="flex flex-col gap-2 mt-3 font-semibold mb-4 py-4 border-y-2 border-border border-dotted">
+                <div className="flex flex-col gap-2 mt-3  mb-4 py-4 border-y-2 border-border border-dotted">
                   <div className="text-white text-lg mb-2">Advanced</div>
                   {checkboxes.map((label, index) => (
                     <div
@@ -142,7 +142,7 @@ const SwapForm = () => {
               <PlaceOrderButton />
 
               {/* Account Health */}
-              <div className="py-3 border-b border-border font-semibold">
+              <div className="py-3 border-b border-border ">
                 <div className="text-white text-lg ml-[8px] pb-2 border-b-2 border-dotted border-border">
                   Account Details
                 </div>

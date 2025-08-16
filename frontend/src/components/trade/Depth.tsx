@@ -102,7 +102,7 @@ export const Depth = ({ market }: { market: string }) => {
               }`}
             >
               <span
-                className={`flex items-center justify-center overflow-hidden text-vestgrey-100 whitespace-nowrap px-8 py-1  text-md font-semibold transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
+                className={`flex items-center justify-center overflow-hidden text-vestgrey-100 whitespace-nowrap px-8 py-1  text-md  transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
                   activeTab === "orderbook" && "border-primary !text-white"
                 }`}
               >
@@ -122,7 +122,7 @@ export const Depth = ({ market }: { market: string }) => {
               }`}
             >
               <span
-                className={`flex items-center justify-center overflow-hidden whitespace-nowrap text-vestgrey-100 px-8 py-1  text-md font-semibold transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
+                className={`flex items-center justify-center overflow-hidden whitespace-nowrap text-vestgrey-100 px-8 py-1  text-md  transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
                   activeTab === "recentTrades" && "border-primary !text-white"
                 }`}
               >
