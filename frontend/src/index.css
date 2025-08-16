@@ -6,10 +6,10 @@
   --color-vestgrey-800: rgb(26 26 26);
   --color-vestgrey-100: rgb(150 148 148);
   --color-vestgrey-50: rgb(242, 241, 240);
-  --color-primary: #e5ff7e;
-  --color-background: rgb(15 15 15);
-  --color-green: #42C78D;
-  --color-red: #FF1658;
+  --color-primary: #b833ff;
+  --color-background: rgba(7, 9, 16);
+  --color-green: #42c78d;
+  --color-red: #ff1658;
   --text-sm: 10.5px;
   --text-md: 12px;
   --text-lg: 13.5px;
@@ -19,6 +19,7 @@
 :root {
   background-color: var(--color-background);
   color: white;
+  font-family: "Roboto", sans-serif;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

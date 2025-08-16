@@ -66,7 +66,7 @@ function SelectTickerTable({
                   className="group cursor-pointer"
                   onClick={() => handleSelectTicker(ticker)}
                 >
-                  <td className="px-6 py-1.5 font-mono text-vestgrey-50 group-hover:bg-primary/5">
+                  <td className="px-6 py-1.5  text-vestgrey-50 group-hover:bg-primary/5">
                     <div className="flex items-center gap-3">
                       <img
                         src="/common/star.svg"
@@ -75,14 +75,14 @@ function SelectTickerTable({
                       />
                       <span className="font-sans">{ticker.symbol}</span>
                       <div className="rounded border border-border px-1">
-                        <span className="font-mono text-primary">100x</span>
+                        <span className=" text-primary">100x</span>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-1.5 font-mono text-vestgrey-50 group-hover:bg-primary/5">
+                  <td className="px-6 py-1.5  text-vestgrey-50 group-hover:bg-primary/5">
                     <span className="text-green">{ticker.markPrice}</span>
                   </td>
-                  <td className="px-6 py-1.5 font-mono text-vestgrey-50 group-hover:bg-primary/5">
+                  <td className="px-6 py-1.5  text-vestgrey-50 group-hover:bg-primary/5">
                     <span
                       className={
                         parseFloat(ticker.priceChangePercent) < 0
@@ -93,7 +93,7 @@ function SelectTickerTable({
                       {ticker.priceChange} / {ticker.priceChangePercent}%
                     </span>
                   </td>
-                  <td className="px-6 py-1.5 font-mono text-vestgrey-50 group-hover:bg-primary/5">
+                  <td className="px-6 py-1.5  text-vestgrey-50 group-hover:bg-primary/5">
                     <span className="text-green">
                       {ticker.oneHrFundingRate}
                     </span>

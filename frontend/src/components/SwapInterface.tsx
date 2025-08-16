@@ -8,7 +8,7 @@ const SwapInterface = () => {
   const [orderType, setOrderType] = useState<OrderType>(OrderType.BUY);
 
   return (
-    <div className="flex h-full flex-col border-r border-border">
+    <div className="flex h-full flex-col">
       <div className="mx-2">
         <SwapMarket />
         <OrderTypeBar orderType={orderType} setOrderType={setOrderType} />

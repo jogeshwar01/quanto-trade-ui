@@ -25,7 +25,7 @@ const SwapMarket = () => {
         </span>
       </div>
       <div className="rounded border flex items-center gap-1 opacity-50 border-border mr-[6px] py-1 px-2">
-        <div className="font-mono text-primary text-md align-middle">100x</div>
+        <div className=" text-primary text-md align-middle">100x</div>
         <img
           src="/common/discover_tune.svg"
           alt="discover"

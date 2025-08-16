@@ -79,7 +79,7 @@ export const OrderBook = () => {
                 return (
                   <div key={index} className="relative w-full">
                     <div className="w-full h-5 flex items-center relative box-border text-xs leading-7 justify-between font-display mr-0">
-                      <div className="flex flex-row mx-2 justify-between font-mono w-full">
+                      <div className="flex flex-row mx-2 justify-between  w-full">
                         <div className="z-10 text-xs leading-6 text-red min-w-[80px]">
                           {parseFloat(order[0]).toFixed(2)}
                         </div>
@@ -115,7 +115,7 @@ export const OrderBook = () => {
             </div>
 
             {/* Orderbook Spread */}
-            <div className="relative w-full px-2 inline-flex font-mono justify-between gap-4 items-center py-1 min-h-[26px] border-y border-border  z-20">
+            <div className="relative w-full px-2 inline-flex  justify-between gap-4 items-center py-1 min-h-[26px] border-y border-border  z-20">
               <div
                 className={`text-xs flex items-center gap-1 ${
                   trades?.[1] &&
@@ -183,7 +183,7 @@ export const OrderBook = () => {
                 return (
                   <div key={index} className="relative w-full">
                     <div className="w-full h-5 flex items-center relative box-border text-xs leading-7 justify-between font-display ml-0">
-                      <div className="flex flex-row mx-2 justify-between font-mono w-full">
+                      <div className="flex flex-row mx-2 justify-between  w-full">
                         <div className="z-10 text-xs leading-6 text-green min-w-[80px]">
                           {parseFloat(order[0]).toFixed(2)}
                         </div>

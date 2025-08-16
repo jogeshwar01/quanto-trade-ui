@@ -8,7 +8,7 @@ export default function FavouritesBar() {
   const favoritePairs = ["SOL-PERP", "BTC-PERP", "ETH-PERP"];
 
   return (
-    <div className="flex items-center h-[38px] text-md font-semibold gap-4 pl-[12px] border-l border-b border-border">
+    <div className="flex items-center h-[38px] text-md font-semibold gap-4 border-b border-border">
       <StarOutlinedIcon className="text-primary mr-2 !text-[18px]" />
       {favoritePairs.map((pair) => {
         const ticker = tickers.find((t) => t.symbol === pair);

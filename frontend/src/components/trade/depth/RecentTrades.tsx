@@ -30,7 +30,7 @@ export const RecentTrades = () => {
 
       {/* Scrollable Trades Data */}
       <div
-        className="flex-1 overflow-y-auto font-mono"
+        className="flex-1 overflow-y-auto "
         style={{
           scrollbarWidth: "none" /* For Firefox */,
           msOverflowStyle: "none" /* For Internet Explorer and Edge */,

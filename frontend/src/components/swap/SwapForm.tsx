@@ -68,20 +68,20 @@ const SwapForm = () => {
                     <div className="flex items-center w-full mr-2">
                       <input
                         disabled
-                        className="h-9 w-full px-2.5 py-1.5 border-b border-border font-mono outline-none"
+                        className="h-9 w-full px-2.5 py-1.5 border-b border-border  outline-none"
                         placeholder="0"
                       />
-                      <span className="border-b border-border h-9 px-2 py-1.5 font-mono">
+                      <span className="border-b border-border h-9 px-2 py-1.5 ">
                         SOL
                       </span>
                     </div>
                     <div className="flex items-center w-full">
                       <input
                         disabled
-                        className="h-9 w-full px-2.5 py-1.5 border-b border-border font-mono outline-none"
+                        className="h-9 w-full px-2.5 py-1.5 border-b border-border  outline-none"
                         placeholder="0"
                       />
-                      <span className="border-b border-border h-9 px-2 py-1.5 font-mono">
+                      <span className="border-b border-border h-9 px-2 py-1.5 ">
                         USD
                       </span>
                     </div>
@@ -102,7 +102,7 @@ const SwapForm = () => {
                     />
                     <input
                       disabled
-                      className="h-7 w-full px-2.5 border border-border rounded-lg text-white font-mono text-lg max-w-[50px] outline-none"
+                      className="h-7 w-full px-2.5 border border-border rounded-lg text-white  text-lg max-w-[50px] outline-none"
                       placeholder="0%"
                     />
                   </div>
@@ -114,7 +114,7 @@ const SwapForm = () => {
                     className="flex h-6 items-center justify-between text-vestgrey-100"
                   >
                     <p className="text-md">{item.label}</p>
-                    <p className="font-mono text-md">{item.value}</p>
+                    <p className=" text-md">{item.value}</p>
                   </div>
                 ))}
 
@@ -155,7 +155,7 @@ const SwapForm = () => {
                       <p className="border-b-2 border-dashed border-blue-900">
                         {item.label}
                       </p>
-                      <p className="font-mono text-white">{item.value}</p>
+                      <p className=" text-white">{item.value}</p>
                     </div>
                   ))}
                 </div>

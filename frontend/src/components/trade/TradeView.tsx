@@ -119,7 +119,7 @@ export const TradeView = ({ market }: { market: string }) => {
   }, [fetchKlineData, market, selectedTime]);
 
   return (
-    <div className="h-full min-h-[450px] max-h-[525px] bg-container-bg border-l border-t border-border overflow-hidden w-full flex flex-col">
+    <div className="h-full min-h-[450px] max-h-[525px] bg-container-bg border-t border-border overflow-hidden w-full flex flex-col">
       <div className="w-full py-2 px-3 flex items-center relative justify-between leading-[16px] flex-1 text-text-emphasis">
         <div className="w-[20%] text-lg font-semibold">
           {ticker?.symbol ? `${ticker?.symbol?.split("-")?.[0]} / US DOLLAR` : ""}

@@ -1,4 +1,4 @@
-# Vest Frontend
+# Quanto Frontend
 
 ```sh
 npm run dev

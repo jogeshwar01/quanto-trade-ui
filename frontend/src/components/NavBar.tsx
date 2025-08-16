@@ -1,51 +1,75 @@
 import ConnectWalletButton from "./navbar/ConnectWalletButton";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import SyncAltOutlinedIcon from "@mui/icons-material/SyncAltOutlined";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Phone from "./icons/Phone";
+import Globe from "./icons/Globe";
 
 function NavBar() {
   return (
     <>
-      <div className="relative col-span-4 grid flex-1 grid-cols-[1fr_max-content_max-content] font-mono">
-        <div className="flex px-[12px]">
+      <div className="relative col-span-4 grid flex-1 text-md grid-cols-[1fr_max-content_max-content] ">
+        <div className="flex items-center">
           <a
-            href="https://app.bullet.xyz/"
+            href="https://quanto.trade/"
             target="_blank"
             rel="noreferrer"
-            className="mr-[16px] flex items-center gap-2"
+            className="mr-[16px] flex items-center gap-2 ml-[44px]"
           >
-            <img src="/bullet-brandmark-logo.svg" alt="Vest" />
+            <img src="/quanto-logo.png" alt="Quanto" />
           </a>
-          <a
-            className="flex items-center gap-1 px-2 text-center text-md font-[600]"
-            href="/trade/SOL-PERP"
-          >
-            <SyncAltOutlinedIcon fontSize="small" />
-            <div>Trade</div>
-          </a>
-          <a
-            className="flex items-center justify-center gap-1 px-2 text-center text-md font-[600] text-vestgrey-100"
-            href="/borrow-lend"
-          >
-            <AccountBalanceWalletOutlinedIcon fontSize="small" />
-            <div>Borrow/Lend</div>
-          </a>
-          <a
-            className="flex items-center gap-1 px-2 text-center text-md font-[600] text-vestgrey-100"
-            href="/competition"
-          >
-            <img src="/common/swords.svg" alt="" className="h-5 w-5" />
-            <div>Competition</div>
-          </a>
-          <a
-            className="flex items-center gap-1 px-2 text-center text-md font-[600] text-vestgrey-100"
-            href="/referral"
-          >
-            <img src="/common/referral.svg" alt="" className="h-5 w-5" />
-            <div>Referrals</div>
-          </a>
+
+          {/* Navigation Options */}
+          <div className="flex items-center space-x-6 ml-10">
+            <a
+              className="text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+              href="#"
+            >
+              Quanto Trade
+            </a>
+            <a
+              className="text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+              href="#"
+            >
+              USDC-Perps
+            </a>
+            <a
+              className="text-gray-500 hover:text-gray-400 transition-colors duration-200 cursor-pointer"
+              href="#"
+            >
+              Spot
+            </a>
+            <a
+              className="text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+              href="#"
+            >
+              Portfolio
+            </a>
+            <a
+              className="text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+              href="#"
+            >
+              Rewards
+            </a>
+            <a
+              className="text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+              href="#"
+            >
+              QLP
+            </a>
+            <div className="flex items-center text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer">
+              <span>More</span>
+              <KeyboardArrowDownIcon className="ml-1 h-4 w-4" />
+            </div>
+          </div>
         </div>
       </div>
-      <ConnectWalletButton />
+      <div className="flex items-center gap-2">
+        <ConnectWalletButton />
+        <div className="h-4 border-l border-gray-700"></div>
+        <div className="flex items-center text-gray-400 gap-2 mr-4 hover:text-gray-300 transition-colors duration-200 cursor-pointer">
+          <Phone />
+          <Globe />
+        </div>
+      </div>
     </>
   );
 }

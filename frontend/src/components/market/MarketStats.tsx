@@ -54,12 +54,10 @@ function MarketStats() {
             {stat.value}
 
             {stat.label == "1h Funding/Countdown" && (
-              <div className="text-white ml-1">
-                / 00:00:00
-              </div>
+              <div className="text-white ml-1">/ 00:00:00</div>
             )}
           </div>
-          <div className="flex flex-1 w-fit items-center justify-start font-mono text-md capitalize text-vestgrey-100 border-b-2 border-dashed border-blue-900">
+          <div className="flex flex-1 w-fit items-center justify-start  text-md capitalize text-vestgrey-100 border-b-2 border-dashed border-blue-900">
             {stat.label}
           </div>
         </div>

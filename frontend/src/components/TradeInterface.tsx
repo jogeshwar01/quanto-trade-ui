@@ -10,7 +10,7 @@ function TradeInterface({ market }: { market: string }) {
       <div className="flex">
         <div className="flex flex-col max-w-[950px]">
           <FavouritesBar />
-          <div className="grid h-[50px] shrink-0 grid-cols-4 border-l border-border bg-background">
+          <div className="grid h-[50px] shrink-0 grid-cols-4 bg-background">
             <MarketBar market={market as string} />
           </div>
           <TradeView market={market as string} />

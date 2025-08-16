@@ -21,7 +21,7 @@ export const Trade = () => {
   }
 
   return (
-    <div className="flex h-full flex-col mx-1">
+    <div className="flex h-full flex-col">
       <Helmet>
         <title>{`${
           ticker?.symbol && ticker?.markPrice
@@ -35,14 +35,14 @@ export const Trade = () => {
         <link rel="icon" href="/icon.png" type="image/x-icon" />
       </Helmet>
 
-      <div className="flex flex-col gap-8 lg:hidden uppercase h-[100vh] text-2xl font-mono w-full justify-center items-center">
+      <div className="flex flex-col gap-8 lg:hidden uppercase h-[100vh] text-2xl  w-full justify-center items-center">
         <div className="flex gap-2 items-center">
           <img src="/bullet-brandmark-logo.svg" alt="bullet" className="h-6" />
         </div>
         <div>Mobile Trading Coming soon</div>
       </div>
 
-      <header className="hidden h-[48px] shrink-0 grid-cols-5 border-b border-border border-1 bg-background lg:flex">
+      <header className="hidden h-[52px] shrink-0 grid-cols-5 border-b border-border bg-background lg:flex">
         <NavBar />
       </header>
 
