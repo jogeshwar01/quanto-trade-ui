@@ -10,6 +10,7 @@ export type MessageCallback<T> = {
   channel: string;
 };
 
+// Old websocket message format (for backward compatibility)
 export type WsKeys = "method" | "params";
 export type WsMethods = "SUBSCRIBE" | "UNSUBSCRIBE" | string[];
 
@@ -17,7 +18,17 @@ export type WsMessage = {
   [key in WsKeys]: WsMethods;
 };
 
-export type BufferedMessage = WsMessage & { id: number };
+// New websocket message format
+export type NewWsMessage = {
+  op: "subscribe" | "unsubscribe";
+  args: string[];
+  tag?: string;
+};
+
+// Union type for both old and new formats
+export type WsMessageUnion = WsMessage | NewWsMessage;
+
+export type BufferedMessage = WsMessageUnion;
 
 export type CallbackMap = {
   depth: MessageCallback<DepthData>[];
@@ -40,3 +51,13 @@ export type WsKline = [
   string,
   number
 ];
+
+// New channel mapping for the new format
+export type NewChannelMapping = {
+  "ticker:app": "tickers";
+  "futures/depth:BTC-USD-SWAP-LIN": "depth";
+  "trade:BTC-USD-SWAP-LIN": "trades";
+  "candles3600s:BTC-USD-SWAP-LIN": "kline";
+  "marketCap3600s:BTC-USD-SWAP-LIN": "tickers";
+  [key: string]: string;
+};

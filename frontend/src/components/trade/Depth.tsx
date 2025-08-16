@@ -38,7 +38,7 @@ export const Depth = ({ market }: { market: string }) => {
           )
         );
       },
-      `${market}@depth`
+      `futures/depth:${WsManager.getInstance().convertMarketSymbol(market)}`
     );
 
     WsManager.getInstance().registerCallback<Trade>(
@@ -50,40 +50,33 @@ export const Depth = ({ market }: { market: string }) => {
           qty: data.qty,
           quoteQty: data.quoteQty,
           time: data.time,
+          side: data.side || "BUY",
         };
 
         setTrades((oldTrades) => {
           const newTrades = [...oldTrades];
           newTrades.unshift(newTrade);
-          newTrades.pop();
           return newTrades;
         });
       },
-      `${market}@trades`
+      `trade:${market}`
     );
 
-    WsManager.getInstance().sendMessage({
-      method: "SUBSCRIBE",
-      params: [`${market}@depth`],
-    });
-
-    WsManager.getInstance().sendMessage({
-      method: "SUBSCRIBE",
-      params: [`${market}@trades`],
-    });
+    WsManager.getInstance().subscribeToChannelsWithMarketConversion([
+      `futures/depth:${market}`,
+      `trade:${market}`,
+    ]);
 
     return () => {
-      WsManager.getInstance().deRegisterCallback("depth", `${market}@depth`);
-      WsManager.getInstance().sendMessage({
-        method: "UNSUBSCRIBE",
-        params: [`${market}@depth`],
-      });
-
-      WsManager.getInstance().deRegisterCallback("trades", `${market}@trades`);
-      WsManager.getInstance().sendMessage({
-        method: "UNSUBSCRIBE",
-        params: [`${market}@trades`],
-      });
+      WsManager.getInstance().deRegisterCallback(
+        "depth",
+        `futures/depth:${WsManager.getInstance().convertMarketSymbol(market)}`
+      );
+      WsManager.getInstance().deRegisterCallback("trades", `trade:${market}`);
+      WsManager.getInstance().unsubscribeFromChannelsWithMarketConversion([
+        `futures/depth:${market}`,
+        `trade:${market}`,
+      ]);
     };
   }, [market, setAsks, setBids, setTotalAskSize, setTotalBidSize, setTrades]);
 

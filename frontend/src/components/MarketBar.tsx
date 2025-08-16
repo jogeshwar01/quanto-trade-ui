@@ -26,20 +26,14 @@ function MarketBar({ market }: { market: string }) {
         setTicker(marketTicker);
         setTickers(data);
       },
-      `tickers`
+      `ticker:app`
     );
 
-    WsManager.getInstance().sendMessage({
-      method: "SUBSCRIBE",
-      params: [`tickers`],
-    });
+    WsManager.getInstance().subscribeToChannels(["ticker:app"]);
 
     return () => {
-      WsManager.getInstance().deRegisterCallback("tickers", `tickers`);
-      WsManager.getInstance().sendMessage({
-        method: "UNSUBSCRIBE",
-        params: [`tickers`],
-      });
+      WsManager.getInstance().deRegisterCallback("tickers", `ticker:app`);
+      WsManager.getInstance().unsubscribeFromChannels(["ticker:app"]);
     };
   }, [market, setTicker, setTickers]);
 

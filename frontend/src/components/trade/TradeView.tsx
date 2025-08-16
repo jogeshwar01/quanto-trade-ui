@@ -76,7 +76,7 @@ export const TradeView = ({ market }: { market: string }) => {
     getKlineData();
 
     WsManager.getInstance().registerCallback<KLine>(
-      `kline_${selectedTime}`,
+      `kline`,
       (kline: KLine) => {
         const cleanedKline: UpdatedPrice = {
           close: parseFloat(kline.close),
@@ -92,13 +92,12 @@ export const TradeView = ({ market }: { market: string }) => {
           chartManagerRef.current.update(cleanedKline);
         }
       },
-      `${market}@kline_${selectedTime}`
+      `candles3600s:${market}`
     );
 
-    WsManager.getInstance().sendMessage({
-      method: "SUBSCRIBE",
-      params: [`${market}@kline_${selectedTime}`],
-    });
+    WsManager.getInstance().subscribeToChannelsWithMarketConversion([
+      `candles3600s:${market}`,
+    ]);
 
     // Cleanup the chart and WebSocket callback on unmount or when time interval changes
     return () => {
@@ -108,13 +107,12 @@ export const TradeView = ({ market }: { market: string }) => {
       }
 
       WsManager.getInstance().deRegisterCallback(
-        `kline_${selectedTime}`,
-        `${market}@kline_${selectedTime}`
+        `kline`,
+        `candles3600s:${market}`
       );
-      WsManager.getInstance().sendMessage({
-        method: "UNSUBSCRIBE",
-        params: [`${market}@kline_${selectedTime}`],
-      });
+      WsManager.getInstance().unsubscribeFromChannelsWithMarketConversion([
+        `candles3600s:${market}`,
+      ]);
     };
   }, [fetchKlineData, market, selectedTime]);
 
