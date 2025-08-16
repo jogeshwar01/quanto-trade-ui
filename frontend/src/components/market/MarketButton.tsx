@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { TradesContext } from "../../state/TradesProvider";
-import SelectTickerTable from "./SelectTickerTable";
+// import SelectTickerTable from "./SelectTickerTable";
 import { marketsWithImages } from "../../utils/constants";
 import Info from "../icons/Info";
 
@@ -66,9 +66,9 @@ function MarketButton() {
             </div>
           </button>
 
-          {isSelectOpen && (
+          {/* {isSelectOpen && (
             <SelectTickerTable setIsSelectOpen={setIsSelectOpen} />
-          )}
+          )} */}
         </div>
       </div>
     </div>

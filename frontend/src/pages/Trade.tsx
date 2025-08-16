@@ -17,7 +17,7 @@ export const Trade = () => {
   }, [market, tickers]);
 
   if (!isTickerValid) {
-    return <Navigate to="/trade/SOL-PERP" />;
+    return <Navigate to="/en/markets/BTC-PERP" />;
   }
 
   return (

@@ -18,7 +18,7 @@ function SelectTickerTable({
 
   const handleSelectTicker = (ticker: Ticker) => {
     setIsSelectOpen(false);
-    navigate(`/trade/${ticker.symbol}`); // Navigate to the selected ticker's route
+    navigate(`/en/markets/${ticker.symbol}`); // Navigate to the selected ticker's route
   };
 
   // Filter the tickers based on the search query
