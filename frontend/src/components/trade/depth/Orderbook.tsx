@@ -274,11 +274,11 @@ export const OrderBook = () => {
 
     return (
       <div className="flex-1 flex relative overflow-hidden">
-        {/* Bids (Left Side) */}
+        {/* Bids (Left Side) - Amount | Price */}
         <div className="flex-1 border-r border-border">
           <div className="flex justify-between text-xs py-1 px-2 border-b border-border text-vestgrey-100">
-            <span>Price</span>
             <span>Amount</span>
+            <span>Price</span>
           </div>
           <div
             className="overflow-y-auto"
@@ -292,14 +292,14 @@ export const OrderBook = () => {
                   key={index}
                   className="relative flex justify-between px-2 py-1 text-xs hover:bg-container-bg-hover"
                 >
-                  <span className="text-green z-10">
-                    {parseFloat(order[0]).toFixed(2)}
-                  </span>
                   <span className="text-white z-10">
                     {parseFloat(order[1]).toFixed(4)}
                   </span>
-                  {/* Cumulative background for bids */}
-                  <div className="absolute inset-0 opacity-10 flex justify-start">
+                  <span className="text-green z-10">
+                    {parseFloat(order[0]).toFixed(2)}
+                  </span>
+                  {/* Cumulative background for bids - starting from center */}
+                  <div className="absolute inset-0 opacity-10 flex justify-end">
                     <div
                       className="h-full brightness-80 bg-green"
                       style={{
@@ -317,7 +317,7 @@ export const OrderBook = () => {
           </div>
         </div>
 
-        {/* Asks (Right Side) */}
+        {/* Asks (Right Side) - Price | Amount */}
         <div className="flex-1">
           <div className="flex justify-between text-xs py-1 px-2 border-b border-border text-vestgrey-100">
             <span>Price</span>
@@ -341,7 +341,7 @@ export const OrderBook = () => {
                   <span className="text-white z-10">
                     {parseFloat(order[1]).toFixed(4)}
                   </span>
-                  {/* Cumulative background for asks */}
+                  {/* Cumulative background for asks - starting from center */}
                   <div className="absolute inset-0 opacity-10 flex justify-start">
                     <div
                       className="h-full brightness-80 bg-red"
