@@ -27,10 +27,10 @@ export const Trade = () => {
           ticker?.symbol && ticker?.markPrice
             ? parseFloat(ticker?.markPrice).toFixed(2) +
               " | " +
-              ticker?.symbol +
+              ticker?.symbol?.split("-")[0] +
               " | "
             : ""
-        } bullet X`}</title>
+        } Trade Memecoin Futures | Quanto`}</title>
         <meta name="description" content="Markets Without Manipulation" />
         <link rel="icon" href="/icon.png" type="image/x-icon" />
       </Helmet>

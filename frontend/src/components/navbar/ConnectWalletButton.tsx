@@ -21,7 +21,7 @@ function ConnectWalletButton() {
       {publicKey ? (
         <button
           onClick={handleDisconnect}
-          className="px-[8px] py-[6px] cursor-pointer text-[12px] font-normal border border-border hover:border-primary w-fit inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-background text-vestgrey-100 shadow hover:bg-background/90 h-[28px] rounded-md  tracking-wider"
+          className="px-[8px] py-[10px] cursor-pointer text-[12px] font-normal border border-border hover:border-primary w-fit inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-background text-vestgrey-100 shadow hover:bg-background/90 h-[28px] rounded-md  tracking-wider"
         >
           <img src="/icon.png" alt="Wallet" className="w-4 h-4 mr-2" />
           {publicKey.toBase58().substring(0, 4) +

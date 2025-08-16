@@ -8,6 +8,7 @@
   --color-vestgrey-50: rgb(242, 241, 240);
   --color-primary: #b833ff;
   --color-background: rgba(7, 9, 16);
+  --color-input-background: #1b1424;
   --color-green: #42c78d;
   --color-red: #ff1658;
   --text-sm: 10.5px;
@@ -66,4 +67,45 @@
 .wallet-adapter-dropdown-list-item:hover {
   color: white !important;
   background-color: rgb(15 15 15) !important;
+}
+
+/* Custom checkbox styles */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+input[type="checkbox"]:hover {
+  border-color: var(--color-primary);
 }

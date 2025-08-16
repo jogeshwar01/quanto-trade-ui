@@ -1,164 +1,202 @@
 import "./swapStyles.css";
 import PlaceOrderButton from "./PlaceOrderButton";
-import { useContext } from "react";
-import { TradesContext } from "../../state/TradesProvider";
+import { useState } from "react";
 
 const SwapForm = () => {
-  const { ticker } = useContext(TradesContext);
-
-  const infoSections = [
-    { label: "Position", value: "0.00 SOL" },
-    { label: "Available Margin", value: "$ -" },
-  ];
-
-  const accountHealthInfo = [
-    { label: "Account Leverage", value: "-x" },
-    { label: "Liquidation Risk", value: "0%" },
-    { label: "Account Equity", value: "$ -" },
-    { label: "Unrealized PnL", value: "+$0.00" },
-  ];
-
-  const checkboxes = ["Reduce Only", "TP/SL"];
+  const [positionType, setPositionType] = useState<"long" | "short">("long");
+  const [orderType, setOrderType] = useState("limit");
+  const [entryPrice, setEntryPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [positionValue, setPositionValue] = useState("");
+  const [leverage, setLeverage] = useState(0);
+  const [reduceOnly, setReduceOnly] = useState(false);
+  const [tpSl, setTpSl] = useState(false);
 
   return (
     <form className="relative flex-1">
       <div className="h-full w-full">
         <div className="relative overflow-hidden h-full">
-          <div className="h-full w-full overflow-y-auto">
+          <div className="h-full w-full overflow-y-auto text-xs">
             <div className="flex h-full flex-col">
-              {/* Funds & Price */}
+              {/* Long/Short Tabs */}
+              <div className="flex h-[28px] w-full justify-center text-muted-foreground">
+                <button
+                  type="button"
+                  className={`inline-flex cursor-pointer flex-1 items-center justify-center whitespace-nowrap px-4 py-2 text-lg font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-t border-border ${
+                    positionType === "long"
+                      ? "border-teal-400 border-t-2 text-teal-400"
+                      : "bg-input-background border border-l-0 text-gray-400"
+                  }`}
+                  onClick={() => setPositionType("long")}
+                >
+                  Long
+                </button>
+                <button
+                  type="button"
+                  className={`inline-flex flex-1 cursor-pointer items-center justify-center whitespace-nowrap px-4 py-2 text-lg font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-t border-border ${
+                    positionType === "short"
+                      ? "border-red-500 border-t-2 text-red-500"
+                      : "bg-input-background border border-r-0 text-gray-400"
+                  }`}
+                  onClick={() => setPositionType("short")}
+                >
+                  Short
+                </button>
+              </div>
 
-              <div className="flex flex-col px-2 py-1.5 mt-2">
-                <div className="flex items-center gap-14 py-1.5 text-white h-9">
-                  <div className="flex flex-col">
-                    <p className="text-vestgrey-100 w-fit text-md border-b-2 border-dashed border-blue-900">
-                      Order Type
-                    </p>
-                    <select
-                      disabled
-                      className="bg-transparent w-[120px] text-white outline-none text-lg mt-2 border border-border rounded-md px-1 pb-1 hover:border-primary"
+              {/* Order Type Dropdown */}
+              <div className="px-4 py-3">
+                <select
+                  value={orderType}
+                  onChange={(e) => setOrderType(e.target.value)}
+                  className="w-[50%] text-center bg-input-background text-gray-400 rounded text-xs py-1 outline-none"
+                >
+                  <option value="limit">Limit Order</option>
+                  <option value="market">Market Order</option>
+                </select>
+              </div>
+
+              {/* Available Balance */}
+              <div className="px-4 pb-3">
+                <span className="text-gray-400 text-sm">
+                  Available: 0.00 USD
+                </span>
+              </div>
+
+              {/* Entry Price Input */}
+              <div className="px-4 pb-3">
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={entryPrice}
+                    onChange={(e) => setEntryPrice(e.target.value)}
+                    placeholder="Entry Price (USD)"
+                    className="w-full bg-input-background text-gray-400 px-3 py-2 pr-12 rounded outline-none placeholder:text-gray-400"
+                  />
+                  <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
+                    USD
+                  </span>
+                </div>
+              </div>
+
+              <div className="px-4 pb-3">
+                <span className="text-gray-400 text-sm">Quantity</span>
+              </div>
+
+              {/* Quantity Input */}
+              <div className="px-4 pb-3">
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    placeholder="Quantity"
+                    className="w-full bg-input-background text-gray-400 px-3 py-2 pr-12 rounded outline-none placeholder:text-gray-400"
+                  />
+                  <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
+                    BTC
+                  </span>
+                </div>
+              </div>
+
+              {/* Position Value Input */}
+              <div className="px-4 pb-3">
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={positionValue}
+                    onChange={(e) => setPositionValue(e.target.value)}
+                    placeholder="Position Value"
+                    className="w-full bg-input-background text-gray-400 px-3 py-2 pr-12 rounded outline-none placeholder:text-gray-400"
+                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center">
+                    <span className="text-gray-400 text-sm mr-1">USD</span>
+                    <svg
+                      className="w-4 h-4 text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                     >
-                      <option value="market">Market</option>
-                      <option value="limit">Limit</option>
-                    </select>
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-vestgrey-100 text-md border-b-2 border-dashed border-blue-900">
-                      Market Price
-                    </p>
-                    <span className="text-white mt-2 text-lg">
-                      $
-                      {ticker?.markPrice
-                        ? parseFloat(ticker.markPrice).toFixed(2)
-                        : "-"}
-                    </span>
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col px-2 py-1.5">
-                {/* Size Input */}
-                <div className="mt-1.5">
-                  <div className="flex items-center justify-between py-1.5 text-white h-9">
-                    <p className="text-vestgrey-100 text-md border-b-2 border-dashed border-blue-900">
-                      Trade Value
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5 text-md text-vestgrey-100 h-9">
-                    <div className="flex items-center w-full mr-2">
-                      <input
-                        disabled
-                        className="h-9 w-full px-2.5 py-1.5 border-b border-border  outline-none"
-                        placeholder="0"
-                      />
-                      <span className="border-b border-border h-9 px-2 py-1.5 ">
-                        SOL
-                      </span>
-                    </div>
-                    <div className="flex items-center w-full">
-                      <input
-                        disabled
-                        className="h-9 w-full px-2.5 py-1.5 border-b border-border  outline-none"
-                        placeholder="0"
-                      />
-                      <span className="border-b border-border h-9 px-2 py-1.5 ">
-                        USD
-                      </span>
-                    </div>
-                  </div>
+              {/* Leverage Slider */}
+              <div className="px-4 pb-3">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="range"
+                    id="lever-input"
+                    min="0"
+                    max="100"
+                    value={leverage}
+                    onChange={(e) => setLeverage(parseInt(e.target.value))}
+                    className="flex-1 h-2 bg-input-background rounded-lg appearance-none cursor-pointer slider"
+                  />
+                  <span className="text-gray-400 text-sm min-w-[20px] text-center bg-input-background rounded-md p-2">
+                    {leverage}%
+                  </span>
                 </div>
+              </div>
 
-                {/* Leverage Slider */}
-                <div className="flex flex-col py-1.5">
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="range"
-                      id="lever-input"
-                      disabled
-                      min="0"
-                      max="100"
-                      defaultValue="0"
-                      className="w-full cursor-pointer"
-                    />
-                    <input
-                      disabled
-                      className="h-7 w-full px-2.5 border border-border rounded-lg text-white  text-lg max-w-[50px] outline-none"
-                      placeholder="0%"
-                    />
-                  </div>
+              {/* Checkboxes */}
+              <div className="px-4 pb-3 space-y-2">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={reduceOnly}
+                    onChange={(e) => setReduceOnly(e.target.checked)}
+                    className=""
+                  />
+                  <label className="ml-2 text-gray-400 text-sm">
+                    Reduce only
+                  </label>
                 </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={tpSl}
+                    onChange={(e) => setTpSl(e.target.checked)}
+                    className=""
+                  />
+                  <label className="ml-2 text-gray-400 text-sm">TP/SL</label>
+                </div>
+              </div>
 
-                {infoSections.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex h-6 items-center justify-between text-vestgrey-100"
-                  >
-                    <p className="text-md">{item.label}</p>
-                    <p className=" text-md">{item.value}</p>
+              {/* Order Info */}
+              <div className="px-4 pb-3 space-y-4 mt-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <span className="text-gray-600 text-sm">
+                      Liquidation Price
+                    </span>
                   </div>
-                ))}
-
-                {/* Checkboxes */}
-                <div className="flex flex-col gap-2 mt-3  mb-4 py-4 border-y-2 border-border border-dotted">
-                  <div className="text-white text-lg mb-2">Advanced</div>
-                  {checkboxes.map((label, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between w-full"
-                    >
-                      <span className="text-vestgrey-100 text-md border-b-2 border-dashed border-blue-900">
-                        {label}
-                      </span>
-                      <label className="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" className="sr-only peer" />
-                        <div className="w-8 h-4 bg-vestgrey-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-vestgrey-100 after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
-                      </label>
-                    </div>
-                  ))}
+                  <span className="text-gray-600 text-sm">$0</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <span className="text-gray-600 text-sm">Order Value</span>
+                  </div>
+                  <span className="text-gray-600 text-sm">$-</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <span className="text-gray-600 text-sm">Slippage</span>
+                  </div>
+                  <span className="text-gray-600 text-sm">
+                    Est. 0.5% / Max: -%
+                  </span>
                 </div>
               </div>
 
               {/* Submit Button */}
-              <PlaceOrderButton />
-
-              {/* Account Health */}
-              <div className="py-3 border-b border-border ">
-                <div className="text-white text-lg ml-[8px] pb-2 border-b-2 border-dotted border-border">
-                  Account Details
-                </div>
-                <div className="flex flex-col">
-                  {accountHealthInfo.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between px-2.5 py-1.5 text-gray-400 text-md"
-                    >
-                      <p className="border-b-2 border-dashed border-blue-900">
-                        {item.label}
-                      </p>
-                      <p className=" text-white">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
+              <div className="px-4 pb-4">
+                <PlaceOrderButton />
               </div>
             </div>
           </div>

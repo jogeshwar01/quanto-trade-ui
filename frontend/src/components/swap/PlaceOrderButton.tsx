@@ -19,11 +19,11 @@ const PlaceOrderButton = () => {
   };
 
   return (
-    <div className="w-[95%] mx-auto border-b border-border pb-4">
+    <div className="w-[95%] mx-auto pb-4 mt-10">
       {publicKey ? (
         <button
           onClick={handleDisconnect}
-          className="w-full h-10 border border-border hover:border-primary inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-background text-vestgrey-100 shadow hover:bg-background/90 rounded-sm  tracking-wider"
+          className="w-full h-10 border border-border  inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring text-primary shadow hover:bg-background/90 rounded-sm  tracking-wider"
         >
           <img src="/icon.png" alt="Wallet" className="w-4 h-4 mr-2" />
           {publicKey.toBase58().substring(0, 4) +
@@ -33,7 +33,7 @@ const PlaceOrderButton = () => {
       ) : (
         <button
           onClick={handleClick}
-          className="w-full h-10 cursor-pointer inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-background shadow hover:bg-primary/90 rounded-sm  tracking-wider"
+          className="w-full h-10 cursor-pointer inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring text-primary shadow rounded-sm  tracking-wider"
         >
           Connect Wallet
         </button>

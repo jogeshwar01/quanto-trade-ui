@@ -28,8 +28,8 @@ function MarketStats() {
         } ${parseFloat(ticker.priceChangePercent).toFixed(2)}%`,
         className:
           parseFloat(ticker.priceChangePercent) >= 0
-            ? "text-green-500"
-            : "text-red-500",
+            ? "text-green"
+            : "text-red",
       },
       {
         label: "24h Volume (USD)",
