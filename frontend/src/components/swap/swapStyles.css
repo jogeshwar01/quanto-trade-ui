@@ -1,0 +1,18 @@
+#lever-input {
+  background: rgb(64, 64, 64);
+  height: 2px;
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+  /* style thumb */
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 10px;
+    background: #d1d1d1;
+    border: solid 2px #d1d1d1;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}

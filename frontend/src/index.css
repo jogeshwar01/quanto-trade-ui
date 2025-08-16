@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: rgb(56, 56, 56);
+  --color-vestgrey-900: rgb(20 20 20);
+  --color-vestgrey-800: rgb(26 26 26);
+  --color-vestgrey-100: rgb(150 148 148);
+  --color-vestgrey-50: rgb(242, 241, 240);
+  --color-primary: #e5ff7e;
+  --color-background: rgb(15 15 15);
+  --color-green: #42C78D;
+  --color-red: #FF1658;
+  --text-sm: 10.5px;
+  --text-md: 12px;
+  --text-lg: 13.5px;
+  --text-xl: 15px;
+}
+
+:root {
+  background-color: var(--color-background);
+  color: white;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+:root::-webkit-scrollbar {
+  display: none;
+}
+
+/* solana wallet adaptor custom styles */
+.wallet-adapter-button {
+  height: 35px !important;
+  color: white !important;
+  background-color: rgb(15 15 15) !important;
+  border: 1px;
+}
+
+.wallet-adapter-button:hover {
+  background-color: rgb(70, 70, 70) !important;
+}
+
+.wallet-adapter-modal-title {
+  background-color: rgb(15 15 15) !important;
+  border-radius: 10px !important;
+  color: white !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background-color: rgb(15 15 15) !important;
+  padding-bottom: 20px;
+}
+
+.wallet-adapter-modal-button-close {
+  background-color: rgb(15 15 15) !important;
+}
+
+.wallet-adapter-dropdown-list {
+  background-color: rgb(15 15 15) !important;
+}
+
+.wallet-adapter-dropdown-list-item {
+  color: white !important;
+}
+
+.wallet-adapter-dropdown-list-item:hover {
+  color: white !important;
+  background-color: rgb(15 15 15) !important;
+}
