@@ -31,7 +31,7 @@ function ConnectWalletButton() {
       ) : (
         <button
           onClick={handleClick}
-          className="px-[8px] py-[6px] cursor-pointer text-[12px] inline-flex w-fit items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-background shadow hover:bg-primary/90 h-[28px] rounded-md  tracking-wider"
+          className="px-[8px] py-[10px] cursor-pointer text-[12px] inline-flex w-fit items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-background shadow hover:bg-primary/90 h-[28px] rounded-md  tracking-wider"
         >
           Connect Wallet
         </button>

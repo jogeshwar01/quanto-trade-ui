@@ -37,7 +37,7 @@ function MarketStats() {
         className: "text-white",
       },
       {
-        label: "Open Interest (USD)",
+        label: "Open Int",
         value: "$802,376.78", // This would come from actual open interest data
         className: "text-white",
       },
@@ -52,7 +52,7 @@ function MarketStats() {
         <div
           key={index}
           className={`flex flex-col gap-1 ${
-            index > 2 ? "w-28" : index > 1 ? "w-20" : "w-16"
+            index == 3 ? "w-28" : index > 1 ? "w-20" : "w-16"
           }`}
         >
           <div className="text-xs text-gray-400 font-normal">{stat.label}</div>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-border: rgb(56, 56, 56);
+  --color-border: rgb(39,42,42);
   --color-vestgrey-900: rgb(20 20 20);
   --color-vestgrey-800: rgb(26 26 26);
   --color-vestgrey-100: rgb(150 148 148);

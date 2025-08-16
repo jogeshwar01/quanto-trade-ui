@@ -88,11 +88,11 @@ export const Depth = ({ market }: { market: string }) => {
   }, [market, setAsks, setBids, setTotalAskSize, setTotalBidSize, setTrades]);
 
   return (
-    <div className="flex w-full max-w-[300px] flex-col border-l border-border">
+    <div className="flex w-full max-w-[350px] flex-col border-l border-border">
       <div className="flex flex-col">
         {/* Tabs Section */}
         <div className="relative">
-          <div className="flex border-b border-border">
+          <div className="flex">
             <div
               onClick={() => setActiveTab("orderbook")}
               className={`py-1 px-1 flex items-center relative hover:cursor-pointer hover:bg-container-bg-hover justify-center leading-[16px] flex-1 ${
@@ -108,9 +108,6 @@ export const Depth = ({ market }: { market: string }) => {
               >
                 Order Book
               </span>
-              {activeTab === "orderbook" && (
-                <div className="absolute left-0 bottom-0 w-full z-10 h-[2px] bg-primary"></div>
-              )}
             </div>
 
             <div
@@ -126,11 +123,8 @@ export const Depth = ({ market }: { market: string }) => {
                   activeTab === "recentTrades" && "border-primary !text-white"
                 }`}
               >
-                Recent Trades
+                Trade
               </span>
-              {activeTab === "recentTrades" && (
-                <div className="absolute left-0 bottom-0 w-full z-10 h-[2px] bg-primary"></div>
-              )}
             </div>
           </div>
         </div>

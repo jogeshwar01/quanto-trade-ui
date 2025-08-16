@@ -8,7 +8,7 @@ function TradeInterface({ market }: { market: string }) {
   return (
     <div className="flex flex-col">
       <div className="flex">
-        <div className="flex flex-col max-w-[683px]">
+        <div className="flex flex-col max-w-[800px]">
           <FavouritesBar />
           <div className="grid h-[56px] shrink-0 grid-cols-4 bg-background">
             <MarketBar market={market as string} />
