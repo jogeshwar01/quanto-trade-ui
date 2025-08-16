@@ -15,7 +15,7 @@ const OrderTypeBar: React.FC<OrderTypeBarProps> = ({
         type="button"
         className={`inline-flex cursor-pointer flex-1 items-center justify-center whitespace-nowrap px-4 py-2  text-lg font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-b border-border ${
           orderType === OrderType.BUY
-            ? "border-green border-b-2 text-green [text-shadow:_0_0_30px_#42C78D]"
+            ? "border-green border-b-2 text-green [text-shadow:_0_0_30px_#21867e]"
             : ""
         }`}
         onClick={() => setOrderType(OrderType.BUY)}

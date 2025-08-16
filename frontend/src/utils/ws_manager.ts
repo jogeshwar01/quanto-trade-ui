@@ -138,8 +138,6 @@ export class WsManager {
   }) {
     const { table, data } = messageJson;
 
-    console.log(`Processing new format message: table=${table}`);
-
     if (table === "ticker") {
       this.handleTickerMessage(data);
     } else if (table === "futures/depth") {
@@ -155,7 +153,6 @@ export class WsManager {
 
   private handleTickerMessage(data: any) {
     if (data && data.data && Array.isArray(data.data)) {
-      console.log(`Processing ${data.data.length} ticker items`);
       data.data.forEach(
         (tickerItem: {
           mc?: string;
@@ -198,7 +195,6 @@ export class WsManager {
 
   private handleDepthMessage(data: any) {
     if (Array.isArray(data)) {
-      console.log(`Processing ${data.length} depth items`);
       data.forEach(
         (depthItem: {
           asks?: [number, number][];
@@ -228,7 +224,6 @@ export class WsManager {
   }
 
   private handleTradesMessage(data: any) {
-    console.log(`Processing trades message`);
     if (Array.isArray(data)) {
       data.forEach(
         (tradeItem: {
@@ -263,7 +258,6 @@ export class WsManager {
   }
 
   private handleKlineMessage(data: any) {
-    console.log(`Processing kline message`);
     if (Array.isArray(data)) {
       data.forEach(
         (klineItem: {

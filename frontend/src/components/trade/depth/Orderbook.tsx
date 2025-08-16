@@ -79,7 +79,7 @@ export const OrderBook = () => {
           msOverflowStyle: "none",
         }}
       >
-        {asks?.slice(0, 13)?.map((order, index) => {
+        {asks?.slice(0, 17)?.map((order, index) => {
           const size = parseFloat(order[1]);
           cumulativeAskSize += size; // Keep track of cumulative size
           const totalValue = cumulativeAskSize * parseFloat(order[0]);
@@ -132,7 +132,7 @@ export const OrderBook = () => {
           msOverflowStyle: "none",
         }}
       >
-        {bids?.slice(0, 13)?.map((order, index) => {
+        {bids?.slice(0, 17)?.map((order, index) => {
           const size = parseFloat(order[1]);
           cumulativeBidSize += size; // Keep track of cumulative size
           const totalValue = cumulativeBidSize * parseFloat(order[0]);
@@ -409,9 +409,12 @@ export const OrderBook = () => {
             {renderViewToggle(2, <GreenView />, "Bids Only")}
             {renderViewToggle(3, <RedView />, "Asks Only")}
           </div>
+          <div className="mt-1"></div>
 
           {/* Headers */}
           {renderHeaders()}
+
+          <div className="mt-1"></div>
 
           {/* Content */}
           {renderContent()}

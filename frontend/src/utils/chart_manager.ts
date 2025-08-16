@@ -71,7 +71,7 @@ export class ChartManager {
 
     // Create the Candlestick Series with custom colors
     const candleSeries = chart.addCandlestickSeries({
-      upColor: "#42C78D", // Green color for bullish candles
+      upColor: "#21867e", // Green color for bullish candles
       downColor: "#FF1658", // Red color for bearish candles
       borderVisible: false,
       wickUpColor: "#5dd5a0",

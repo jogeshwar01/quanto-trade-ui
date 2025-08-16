@@ -25,17 +25,21 @@ export const Depth = ({ market }: { market: string }) => {
         setBids(data.bids);
         setAsks(data.asks);
         setTotalBidSize(
-          data.bids.reduce(
-            (acc: number, bid: [string, string]) => acc + parseFloat(bid[1]),
-            0
-          )
+          data.bids
+            .slice(0, 17)
+            .reduce(
+              (acc: number, bid: [string, string]) => acc + parseFloat(bid[1]),
+              0
+            )
         );
 
         setTotalAskSize(
-          data.asks.reduce(
-            (acc: number, ask: [string, string]) => acc + parseFloat(ask[1]),
-            0
-          )
+          data.asks
+            .slice(0, 17)
+            .reduce(
+              (acc: number, ask: [string, string]) => acc + parseFloat(ask[1]),
+              0
+            )
         );
       },
       `futures/depth:${WsManager.getInstance().convertMarketSymbol(market)}`
@@ -88,14 +92,14 @@ export const Depth = ({ market }: { market: string }) => {
           <div className="flex">
             <div
               onClick={() => setActiveTab("orderbook")}
-              className={`py-1 px-1 flex items-center relative hover:cursor-pointer hover:bg-container-bg-hover justify-center leading-[16px] flex-1 ${
+              className={`py-1 px-1 flex items-center relative hover:cursor-pointer hover:bg-container-bg-hover justify-start leading-[16px] ${
                 activeTab === "orderbook"
                   ? "text-text-emphasis bg-container-bg-selected"
                   : "text-text-label"
               }`}
             >
               <span
-                className={`flex items-center justify-center overflow-hidden text-vestgrey-100 whitespace-nowrap px-8 py-1  text-md  transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
+                className={`flex items-center justify-start overflow-hidden text-vestgrey-100 whitespace-nowrap px-2 py-1  text-md  transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
                   activeTab === "orderbook" && "border-primary !text-white"
                 }`}
               >
@@ -105,14 +109,14 @@ export const Depth = ({ market }: { market: string }) => {
 
             <div
               onClick={() => setActiveTab("recentTrades")}
-              className={`py-1 px-1 flex items-center relative hover:cursor-pointer hover:bg-container-bg-hover justify-center leading-[16px] flex-1 ${
+              className={`py-1 px-1 flex items-center relative hover:cursor-pointer hover:bg-container-bg-hover justify-start leading-[16px] ${
                 activeTab === "recentTrades"
                   ? "text-text-emphasis bg-container-bg-selected"
                   : "text-text-label"
               }`}
             >
               <span
-                className={`flex items-center justify-center overflow-hidden whitespace-nowrap text-vestgrey-100 px-8 py-1  text-md  transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
+                className={`flex items-center justify-start overflow-hidden whitespace-nowrap text-vestgrey-100 px-2 py-1  text-md  transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none" ${
                   activeTab === "recentTrades" && "border-primary !text-white"
                 }`}
               >
