@@ -38,6 +38,7 @@ export interface Trade {
   qty: string;
   quoteQty: string;
   time: number;
+  side: string;
 }
 
 export interface Depth {

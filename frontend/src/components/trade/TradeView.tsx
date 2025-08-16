@@ -12,14 +12,14 @@ const timeOptions = [
   { label: "5m", value: "5m", timestamp: 5 * 60 * 1000 },
   { label: "15m", value: "15m", timestamp: 15 * 60 * 1000 },
   { label: "30m", value: "30m", timestamp: 30 * 60 * 1000 },
-  { label: "1H", value: "1h", timestamp: 60 * 60 * 1000 },
+  { label: "1hr", value: "1hr", timestamp: 60 * 60 * 1000 },
   { label: "1D", value: "1d", timestamp: 24 * 60 * 60 * 1000 },
 ];
 
 export const TradeView = ({ market }: { market: string }) => {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartManagerRef = useRef<ChartManager | null>(null);
-  const [selectedTime, setSelectedTime] = useState("1m"); // Default to 1 minute
+  const [selectedTime, setSelectedTime] = useState("1hr"); // Default to 1 minute
 
   const { ticker } = useContext(TradesContext);
 

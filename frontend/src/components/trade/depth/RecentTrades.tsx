@@ -39,15 +39,13 @@ export const RecentTrades = () => {
           >
             <span
               className={`font-[300] text-[13px] leading-[16px] text-left ${
-                parseFloat(trade.qty) > 0 ? "text-green" : "text-red"
+                trade.side === "BUY" ? "text-green" : "text-red"
               }`}
             >
-              {parseFloat(trade.price).toFixed(2)}
+              {parseFloat(trade.price).toFixed(0)}
             </span>
             <span className="font-[300] text-[13px] leading-[16px] text-center">
-              {parseFloat(trade.qty) > 0
-                ? parseFloat(trade.qty).toFixed(2)
-                : (parseFloat(trade.qty) * -1).toString()}
+              {parseFloat(trade.qty).toFixed(4)}
             </span>
             <span className="font-[300] text-[13px] leading-[16px] text-right text-nowrap">
               {formatTime(trade.time)}
