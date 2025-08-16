@@ -16,7 +16,7 @@ export const OrderBook = () => {
 
   const [spread, setSpread] = useState<number>(0);
   const [spreadPercentage, setSpreadPercentage] = useState<number>(0);
-  const [viewMode, setViewMode] = useState<number>(1); // 1: combined, 2: bids only, 3: asks only, 4: side by side
+  const [viewMode, setViewMode] = useState<number>(4); // 1: combined, 2: bids only, 3: asks only, 4: side by side
 
   const calculateCumulativeWidth = (
     cumulativeSize: number,
@@ -267,59 +267,101 @@ export const OrderBook = () => {
     </div>
   );
 
-  const renderSideBySideView = () => (
-    <div className="flex-1 flex relative overflow-hidden">
-      {/* Bids (Left Side) */}
-      <div className="flex-1 border-r border-border">
-        <div className="text-center text-xs text-green py-1 border-b border-border">
-          Bids
-        </div>
-        <div
-          className="overflow-y-auto"
-          style={{ height: "calc(100% - 24px)" }}
-        >
-          {bids?.slice(0, 20)?.map((order, index) => (
-            <div
-              key={index}
-              className="flex justify-between px-2 py-1 text-xs hover:bg-container-bg-hover"
-            >
-              <span className="text-green">
-                {parseFloat(order[0]).toFixed(2)}
-              </span>
-              <span className="text-white">
-                {parseFloat(order[1]).toFixed(4)}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+  const renderSideBySideView = () => {
+    // Reset cumulative sizes for side-by-side view
+    let cumulativeBidSize = 0;
+    let cumulativeAskSize = 0;
 
-      {/* Asks (Right Side) */}
-      <div className="flex-1">
-        <div className="text-center text-xs text-red py-1 border-b border-border">
-          Asks
+    return (
+      <div className="flex-1 flex relative overflow-hidden">
+        {/* Bids (Left Side) */}
+        <div className="flex-1 border-r border-border">
+          <div className="flex justify-between text-xs py-1 px-2 border-b border-border text-vestgrey-100">
+            <span>Price</span>
+            <span>Amount</span>
+          </div>
+          <div
+            className="overflow-y-auto"
+            style={{ height: "calc(100% - 24px)" }}
+          >
+            {bids?.slice(0, 20)?.map((order, index) => {
+              const size = parseFloat(order[1]);
+              cumulativeBidSize += size;
+              return (
+                <div
+                  key={index}
+                  className="relative flex justify-between px-2 py-1 text-xs hover:bg-container-bg-hover"
+                >
+                  <span className="text-green z-10">
+                    {parseFloat(order[0]).toFixed(2)}
+                  </span>
+                  <span className="text-white z-10">
+                    {parseFloat(order[1]).toFixed(4)}
+                  </span>
+                  {/* Cumulative background for bids */}
+                  <div className="absolute inset-0 opacity-10 flex justify-start">
+                    <div
+                      className="h-full brightness-80 bg-green"
+                      style={{
+                        width: calculateCumulativeWidth(
+                          cumulativeBidSize,
+                          totalBidSize
+                        ),
+                        transition: "width 0.3s ease-in-out",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div
-          className="overflow-y-auto"
-          style={{ height: "calc(100% - 24px)" }}
-        >
-          {asks?.slice(0, 20)?.map((order, index) => (
-            <div
-              key={index}
-              className="flex justify-between px-2 py-1 text-xs hover:bg-container-bg-hover"
-            >
-              <span className="text-red">
-                {parseFloat(order[0]).toFixed(2)}
-              </span>
-              <span className="text-white">
-                {parseFloat(order[1]).toFixed(4)}
-              </span>
-            </div>
-          ))}
+
+        {/* Asks (Right Side) */}
+        <div className="flex-1">
+          <div className="flex justify-between text-xs py-1 px-2 border-b border-border text-vestgrey-100">
+            <span>Price</span>
+            <span>Amount</span>
+          </div>
+          <div
+            className="overflow-y-auto"
+            style={{ height: "calc(100% - 24px)" }}
+          >
+            {asks?.slice(0, 20)?.map((order, index) => {
+              const size = parseFloat(order[1]);
+              cumulativeAskSize += size;
+              return (
+                <div
+                  key={index}
+                  className="relative flex justify-between px-2 py-1 text-xs hover:bg-container-bg-hover"
+                >
+                  <span className="text-red z-10">
+                    {parseFloat(order[0]).toFixed(2)}
+                  </span>
+                  <span className="text-white z-10">
+                    {parseFloat(order[1]).toFixed(4)}
+                  </span>
+                  {/* Cumulative background for asks */}
+                  <div className="absolute inset-0 opacity-10 flex justify-start">
+                    <div
+                      className="h-full brightness-80 bg-red"
+                      style={{
+                        width: calculateCumulativeWidth(
+                          cumulativeAskSize,
+                          totalAskSize
+                        ),
+                        transition: "width 0.3s ease-in-out",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderHeaders = () => {
     if (viewMode === 4) {

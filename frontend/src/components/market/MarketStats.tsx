@@ -41,6 +41,11 @@ function MarketStats() {
         value: "$802,376.78", // This would come from actual open interest data
         className: "text-white",
       },
+      {
+        label: "Funding Rate",
+        value: "0.00%",
+        className: "text-white",
+      },
     ];
   }, [ticker]);
 

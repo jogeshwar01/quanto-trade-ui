@@ -37,7 +37,7 @@ export const Trade = () => {
 
       <div className="flex flex-col gap-8 lg:hidden uppercase h-[100vh] text-2xl  w-full justify-center items-center">
         <div className="flex gap-2 items-center">
-          <img src="/bullet-brandmark-logo.svg" alt="bullet" className="h-6" />
+          <img src="/quanto-logo.png" alt="quanto" className="h-12" />
         </div>
         <div>Mobile Trading Coming soon</div>
       </div>
