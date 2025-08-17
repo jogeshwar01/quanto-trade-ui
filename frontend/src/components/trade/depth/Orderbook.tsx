@@ -8,8 +8,7 @@ import {
 } from "../../icons/ViewModes";
 
 export const OrderBook = () => {
-  const { ticker, bids, asks, totalBidSize, totalAskSize } =
-    useContext(TradesContext);
+  const { bids, asks, totalBidSize, totalAskSize } = useContext(TradesContext);
 
   const bidsRef = useRef<HTMLDivElement | null>(null);
   const asksRef = useRef<HTMLDivElement | null>(null);
@@ -284,7 +283,7 @@ export const OrderBook = () => {
             className="overflow-y-auto"
             style={{ height: "calc(100% - 24px)" }}
           >
-            {bids?.slice(0, 20)?.map((order, index) => {
+            {bids?.slice(0, 22)?.map((order, index) => {
               const size = parseFloat(order[1]);
               cumulativeBidSize += size;
               return (
@@ -327,7 +326,7 @@ export const OrderBook = () => {
             className="overflow-y-auto"
             style={{ height: "calc(100% - 24px)" }}
           >
-            {asks?.slice(0, 20)?.map((order, index) => {
+            {asks?.slice(0, 22)?.map((order, index) => {
               const size = parseFloat(order[1]);
               cumulativeAskSize += size;
               return (
@@ -372,12 +371,8 @@ export const OrderBook = () => {
     return (
       <div className="flex justify-between text-sm px-2 py-1 mb-1 text-vestgrey-100">
         <div className=" text-[12px] text-center  w-fit">Price</div>
-        <div className=" text-[12px]  w-fit">
-          Amount {ticker?.symbol?.split("-")?.[0]}
-        </div>
-        <div className=" text-[12px] text-left  w-fit">
-          Sum {ticker?.symbol?.split("-")?.[0]}
-        </div>
+        <div className=" text-[12px]  w-fit">Amount</div>
+        <div className=" text-[12px] text-left  w-fit">Sum</div>
       </div>
     );
   };
