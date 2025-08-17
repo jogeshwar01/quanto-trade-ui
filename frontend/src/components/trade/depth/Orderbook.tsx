@@ -8,14 +8,14 @@ import {
 } from "../../icons/ViewModes";
 
 export const OrderBook = () => {
-  const { ticker, bids, asks, totalBidSize, totalAskSize, trades } =
+  const { ticker, bids, asks, totalBidSize, totalAskSize } =
     useContext(TradesContext);
 
   const bidsRef = useRef<HTMLDivElement | null>(null);
   const asksRef = useRef<HTMLDivElement | null>(null);
 
-  const [spread, setSpread] = useState<number>(0);
-  const [spreadPercentage, setSpreadPercentage] = useState<number>(0);
+  const [, setSpread] = useState<number>(0);
+  const [, setSpreadPercentage] = useState<number>(0);
   const [viewMode, setViewMode] = useState<number>(4); // 1: combined, 2: bids only, 3: asks only, 4: side by side
 
   const calculateCumulativeWidth = (

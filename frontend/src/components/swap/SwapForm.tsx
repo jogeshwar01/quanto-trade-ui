@@ -172,23 +172,23 @@ const SwapForm = () => {
               <div className="px-4 pb-3 space-y-4 mt-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
-                    <span className="text-gray-600 text-sm">
+                    <span className="text-gray-400 text-sm">
                       Liquidation Price
                     </span>
                   </div>
-                  <span className="text-gray-600 text-sm">$0</span>
+                  <span className="text-gray-400 text-sm">$0</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
-                    <span className="text-gray-600 text-sm">Order Value</span>
+                    <span className="text-gray-400 text-sm">Order Value</span>
                   </div>
-                  <span className="text-gray-600 text-sm">$-</span>
+                  <span className="text-gray-400 text-sm">$-</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
-                    <span className="text-gray-600 text-sm">Slippage</span>
+                    <span className="text-gray-400 text-sm">Slippage</span>
                   </div>
-                  <span className="text-gray-600 text-sm">
+                  <span className="text-gray-400 text-sm">
                     Est. 0.5% / Max: -%
                   </span>
                 </div>

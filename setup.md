@@ -36,7 +36,7 @@ events {
 http {
     server {
         listen 80;
-        server_name vestserver.jogeshwar.xyz;
+        server_name quantoapi.jogeshwar.xyz;
 
         location / {
             proxy_pass http://localhost:7000;
